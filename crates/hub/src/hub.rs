@@ -2,6 +2,7 @@ use crate::key::Key;
 
 use libp2p::{futures::channel::mpsc, Multiaddr, PeerId};
 use prost::Message;
+use teleport_crypto::keys::Key;
 use teleport_p2p::{
     event_loop::Command,
     gossip_node::{AddrInfo, GossipNode, NodeOptions},
@@ -130,7 +131,7 @@ impl Hub {
             .await
             .expect("failed to load indexer");
 
-        let keys = Key::new(config.clone());
+        let keys = Key::new(config.farcaster_priv_key);
 
         // Fill in all registration events
         // syncs upto `latest_block_number`.

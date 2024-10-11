@@ -1,5 +1,4 @@
 mod hub;
-mod key;
 mod sync;
 
 // Re-export hub
